@@ -24,7 +24,7 @@ public class StudentAction extends ActionSupport {
 
 	public void setStu(Student stu) {
 		this.stu = stu;
-	}
+	} 
 
 	public String save() {
 		System.out.println(stu);
