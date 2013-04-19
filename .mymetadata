@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Educational Management System Based on Dynamic Password"
+  id="myeclipse.1366284457079"
+  context-root="/Educational Management System Based on Dynamic Password"
+  j2ee-spec="6.0"
+  archive="Educational Management System Based on Dynamic Password.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
