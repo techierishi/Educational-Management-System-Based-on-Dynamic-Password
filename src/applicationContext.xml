@@ -10,7 +10,6 @@
 				http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
                 	http://www.springframework.org/schema/aop
 			http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
-
 	<!--注册当前可以使用spring的ioc的注解的功能 -->
 	<context:annotation-config></context:annotation-config>
 	<!--自动扫描com下面的所有包,当发现包下面有@services @controller @component..就交给spring的容器来管理 -->
@@ -53,8 +52,8 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="root"></property>
 	</bean>
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	
+	<bean id="sessionFactory"	class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource">
 			<ref bean="dataSource" />
 		</property>
@@ -67,4 +66,12 @@
 				<prop key="show_sql">true</prop>
 			</props>
 		</property>
-	</bean></beans>
+	</bean>
+	
+<!-- 	<bean id="UserDAO" class="cn.edu.hustwb.dto.UserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean> -->
+	
+	</beans>

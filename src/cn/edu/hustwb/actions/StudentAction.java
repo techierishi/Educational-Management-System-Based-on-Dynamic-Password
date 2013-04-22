@@ -16,9 +16,11 @@ public class StudentAction extends ActionSupport {
 	@Autowired
 	public void setService(StudentService service) {
 		this.service = service;
+		
 	}
 
 	public Student getStu() {
+		
 		return stu;
 	}
 
