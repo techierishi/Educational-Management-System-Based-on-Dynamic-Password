@@ -5,7 +5,7 @@ drop table if exists user;
 /*==============================================================*/
 create table user
 (
-   userid               int not null,
+   userid               int not null auto_increment,
    account              varchar(256),
    password             varchar(256),
    type                 int,
