@@ -3,6 +3,7 @@
     <wb-module deploy-name="Educational Management System Based on Dynamic Password">
         <wb-resource deploy-path="/" source-path="/WebRoot"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <property name="context-root" value="/Educational Management System Based on Dynamic Password"/>
         <property name="java-output-path" value="/Educational Management System Based on Dynamic Password/WebRoot/WEB-INF/classes"/>
     </wb-module>
