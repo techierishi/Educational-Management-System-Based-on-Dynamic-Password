@@ -28,17 +28,7 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
-	/** full constructor */
-	public User(String account, String password, Integer type, Integer status,
-			Integer permissions) {
-		this.account = account;
-		this.password = password;
-		this.type = type;
-		this.status = status;
-		this.permissions = permissions;
-	}
 
-	// Property accessors
 	@Id
 	@GeneratedValue
 	@Column(name = "userid", unique = true, nullable = false)

@@ -12,50 +12,28 @@
 			http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 	<!--注册当前可以使用spring的ioc的注解的功能 -->
 	<context:annotation-config></context:annotation-config>
-	<!--自动扫描com下面的所有包,当发现包下面有@services @controller @component..就交给spring的容器来管理 -->
-	<context:component-scan base-package="com.*"></context:component-scan>
+	<!--自动扫描cn.edu.hustwb下面的所有包,当发现包下面有@services @controller @component..就交给spring的容器来管理 -->
+	<context:component-scan base-package="cn.edu.hustwb"></context:component-scan>
 	<!--去classes的目录下面去找一个叫做jdbc.properties的属性文件 而且将它解析 我们可以通过springEL表达式来获得属性的值 -->
 	
-<!-- 	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-		<property name="configLocation" value="classpath:hibernate.cfg.xml">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
 		</property>
-	</bean>
-	 -->
-	 
-
-
-	<!--把所有对于事务的配置都交给HibernateTransacionManager来管理 -->
-	<bean id="txManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"></property>
-	</bean>
-	<!--开启使用注解来进行事务的配置的功能 -->
-	<tx:annotation-driven transaction-manager="txManager" />
-
-
-
-<!-- 	<bean id="StudentDAO" class="cn.edu.hustwb.dao.impl.StudentDAOImpl">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-	</bean> -->
-	
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource"> 
-		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver">
-		</property>
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/School">
+		<property name="url" value="jdbc:mysql://localhost:3306/School">
 		</property>
 		<property name="username" value="root"></property>
 		<property name="password" value="root"></property>
 	</bean>
-	
-	<bean id="sessionFactory"	class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource">
 			<ref bean="dataSource" />
+		</property>
+		<property name="packagesToScan">
+			<list>
+				<value>cn.edu.hustwb.dto</value>
+			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
@@ -67,11 +45,31 @@
 			</props>
 		</property>
 	</bean>
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 	
-<!-- 	<bean id="UserDAO" class="cn.edu.hustwb.dto.UserDAO">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory" />
-		</property>
-	</bean> -->
+	<!--把所有对于事务的配置都交给HibernateTransacionManager来管理 -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 
+	<aop:config>
+		<aop:pointcut id="bussinessService"
+			expression="execution(public * cn.edu.hustwb.services.*.*(..))" />
+		<aop:advisor pointcut-ref="bussinessService" advice-ref="txAdvice" />
+	</aop:config>
+		<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="exists" read-only="true" />
+			<tx:method name="add*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	 -->
+	<!--开启使用注解来进行事务的配置的功能 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+
 	
 	</beans>

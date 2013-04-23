@@ -2,41 +2,30 @@ package cn.edu.hustwb.dao.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.hibernate.LockMode;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Component;
 
 import cn.edu.hustwb.dao.UserDAO;
 import cn.edu.hustwb.dto.User;
-import cn.edu.hustwb.util.HibernateUtil;
 
-/**
- * A data access object (DAO) providing persistence and search support for User
- * entities. Transaction control of the save(), update() and delete() operations
- * can directly support Spring container-managed transactions or they can be
- * augmented to handle user-managed Spring transactions. Each of these methods
- * provides additional information for how to configure it for the desired type
- * of transaction control.
- * 
- * @see cn.edu.hustwb.dto.User
- * @author MyEclipse Persistence Tools
- */
-public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
+@Component("userDao")
+public class UserDAOImpl  implements UserDAO {
 	private static final Logger log = LoggerFactory.getLogger(UserDAOImpl.class);
 	private HibernateTemplate hibernateTemplate; 
 	protected void initDao() {
 	}
 
-
 	@Override
 	public void save(User u) {
 
-		hibernateTemplate.save(u);
+		getHibernateTemplate().save(u);
 	}
 
 
@@ -152,5 +141,13 @@ public class UserDAOImpl extends HibernateDaoSupport implements UserDAO {
 
 	public static UserDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (UserDAO) ctx.getBean("UserDAO");
+	}
+	
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
+	}
+	@Resource
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
 	}
 }

@@ -13,14 +13,23 @@ import cn.edu.hustwb.dao.UserDAO;
 import cn.edu.hustwb.dto.User;
 import cn.edu.hustwb.services.UserService;
 
-@Service("userservice")
+@Service("userService")
 @Transactional(propagation = Propagation.REQUIRED)
 public class UserServiceImpl implements UserService {
 	private UserDAO userDao;
+	
+	public UserDAO getUserDao() {
+		return userDao;
+	}
+	
+//	@Autowired
+	@Resource
+	public void setUserDao(UserDAO userDao) {
+		this.userDao = userDao;
+	}
 
 	@Override
 	public void save(User u) {
-		userDao.save(u);
 	}
  
 	@Override
@@ -48,13 +57,4 @@ public class UserServiceImpl implements UserService {
 		return this.userDao.merge(u);
 	}
 	
-	@Autowired
-	public void setUserdao(UserDAO userDao) {
-		this.userDao = userDao;
-	}
-
-/*	@Resource
-	public void setUserdao(UserDAO userDao) {
-		this.userDao = userDao;
-	}*/
 }

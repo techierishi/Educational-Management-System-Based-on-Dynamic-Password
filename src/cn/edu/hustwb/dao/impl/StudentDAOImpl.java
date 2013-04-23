@@ -1,36 +1,28 @@
 package cn.edu.hustwb.dao.impl;
 
 import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.hibernate.LockMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Component;
 
 import cn.edu.hustwb.dao.StudentDAO;
 import cn.edu.hustwb.dto.Student;
 
-/**
- * A data access object (DAO) providing persistence and search support for
- * Student entities. Transaction control of the save(), update() and delete()
- * operations can directly support Spring container-managed transactions or they
- * can be augmented to handle user-managed Spring transactions. Each of these
- * methods provides additional information for how to configure it for the
- * desired type of transaction control.
- * 
- * @see cn.edu.hustwb.dto.Student
- * @author MyEclipse Persistence Tools
- */
-public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
+@Component("studentDao")
+public class StudentDAOImpl  implements StudentDAO {
 	private static final Logger log = LoggerFactory.getLogger(StudentDAOImpl.class);
-
+	private HibernateTemplate hibernateTemplate; 
 	protected void initDao() {
 		// do nothing
 	}
 
-	/* (non-Javadoc)
-	 * @see cn.edu.hustwb.dto.StudentDAOImpl#save(cn.edu.hustwb.dto.Student)
-	 */
 	@Override
 	public void save(Student transientInstance) {
 		log.debug("saving Student instance");
@@ -173,5 +165,15 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 
 	public static StudentDAO getFromApplicationContext(ApplicationContext ctx) {
 		return (StudentDAO) ctx.getBean("StudentDAO");
+	}
+
+	
+	public HibernateTemplate getHibernateTemplate() {
+		return hibernateTemplate;
+	}
+	
+	@Resource
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+		this.hibernateTemplate = hibernateTemplate;
 	}
 }

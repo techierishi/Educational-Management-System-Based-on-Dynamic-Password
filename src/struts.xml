@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+
 <struts>
-	<package name="struts2" namespace="/" extends="struts-default">
+	<package name="registration"  extends="struts-default">
 
 		<!--action的name一定要和你的Action中的@controller中的名字保持一致 spring容器就可以帮助你注入你想要的那个bean过来 -->
+		<action name="user"  class="user">
 
-		<action name="studentAction" class="com.hrs.actions.StudentAction">
-			<result>
-				<param name="location">/index.jsp</param>
-			</result>
+			<result name="success">/registerSuccess.jsp</result>
+			<result name="fail">/registerFail.jsp</result>
+
 		</action>
+
 
 	</package>
 </struts>    

@@ -14,7 +14,11 @@ public class UserServiceImplTest {
 
 	@Test
 	public void testSave() {
-		
+		UserService um = new UserServiceImpl(); 
+		User u = new User();
+		u.setAccount("123");
+		u.setPassword("b");
+		um.save(u);
 	}
 	@Test
 	public void testAdd() {
@@ -23,7 +27,6 @@ public class UserServiceImplTest {
 		u.setAccount("123");
 		u.setPassword("b");
 		um.save(u);
-		u.setAccount("b");
 	}
 	@Test
 	public void testDelete() {
