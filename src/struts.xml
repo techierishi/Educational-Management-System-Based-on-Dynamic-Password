@@ -3,16 +3,11 @@
 
 
 <struts>
-	<package name="registration"  extends="struts-default">
-
-		<!--action的name一定要和你的Action中的@controller中的名字保持一致 spring容器就可以帮助你注入你想要的那个bean过来 -->
-		<action name="user"  class="user">
-
+	<!--action的name一定要和你的Action中的@controller中的名字保持一致 spring容器就可以帮助你注入你想要的那个bean过来 -->
+	<package name="hustwb"  extends="struts-default">
+		<action name="User"  class="user">
 			<result name="success">/registerSuccess.jsp</result>
 			<result name="fail">/registerFail.jsp</result>
-
 		</action>
-
-
 	</package>
 </struts>    

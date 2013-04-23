@@ -13,7 +13,7 @@ import cn.edu.hustwb.vo.UserVO;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-@Controller("user")
+@Component("user")
 @Scope("prototype")
 public class UserAction extends ActionSupport implements ModelDriven{
 	
@@ -33,11 +33,14 @@ public class UserAction extends ActionSupport implements ModelDriven{
 	@Override
 	public String execute() throws Exception{
 		System.out.println("我是action~!~!~!~!~!~!~!~!~!~");
+		System.out.println(uvo.getAccount());
+		System.out.println(uvo.getPassword());
 		User user = new User();
 		user.setAccount(uvo.getAccount());
 		user.setPassword(uvo.getPassword());
-		if (true) {
+		if (uvo.getPassword().equals(uvo.getPassword2())) {
 			System.out.println("成功，返回success");
+			us.add(user);
 			return "success";
 		}
 		return "fail";

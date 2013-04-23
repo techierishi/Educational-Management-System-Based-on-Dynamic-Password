@@ -24,7 +24,7 @@ public class UserDAOImpl  implements UserDAO {
 
 	@Override
 	public void save(User u) {
-
+		System.out.println("UserDAO发出save方法");
 		getHibernateTemplate().save(u);
 	}
 
