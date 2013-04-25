@@ -8,6 +8,7 @@
 		<action name="User"  class="user">
 			<result name="success">/registerSuccess.jsp</result>
 			<result name="fail">/registerFail.jsp</result>
+			<result name="register">/register.jsp</result>
 		</action>
 	</package>
 </struts>    
