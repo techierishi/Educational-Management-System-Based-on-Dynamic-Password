@@ -5,11 +5,12 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.hibernate.LockMode;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.HibernateTemplate;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Component;
 
 import cn.edu.hustwb.dao.UserDAO;
@@ -28,6 +29,27 @@ public class UserDAOImpl  implements UserDAO {
 		getHibernateTemplate().save(u);
 	}
 
+	@Override
+	public void update(User u) {
+		getHibernateTemplate().update(u);
+		System.out.println("UserDAO发出update方法");
+	}
+	public boolean login(User u){ 
+		System.out.println("UserDAO发出的login方法");
+		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+		SQLQuery query = session.createSQLQuery("select * from user where account = ? and password=?").addEntity(User.class);
+		query.setParameter(0, u.getAccount());
+		query.setParameter(1, u.getPassword());
+		int rows=query.list().size();
+		if(rows>0){
+			System.out.println("登录成功");
+			this.update(u);
+			return true;
+		}else{
+			System.out.println("登录失败");
+			return false;
+		}
+	}
 
 	@Override
 	public void delete(User persistentInstance) {
@@ -150,4 +172,6 @@ public class UserDAOImpl  implements UserDAO {
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
+
+
 }

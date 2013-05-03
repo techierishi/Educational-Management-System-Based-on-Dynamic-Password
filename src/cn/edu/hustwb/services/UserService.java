@@ -6,12 +6,13 @@ import cn.edu.hustwb.dto.User;
 
 public interface UserService {
 
-	void save(User transientInstance);
 
 	void delete(User persistentInstance);
 	
 	void add(User transientInstance);
-
+	
+	boolean login(User transientInstance);
+	
 	User findById(java.lang.Integer id);
 
 	List findAll();

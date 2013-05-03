@@ -18,7 +18,7 @@ public class UserServiceImplTest {
 		User u = new User();
 		u.setAccount("123");
 		u.setPassword("b");
-		um.save(u);
+		um.add(u);
 	}
 	@Test
 	public void testAdd() {
@@ -26,7 +26,7 @@ public class UserServiceImplTest {
 		User u = new User();
 		u.setAccount("123");
 		u.setPassword("b");
-		um.save(u);
+		um.add(u);
 	}
 	@Test
 	public void testDelete() {

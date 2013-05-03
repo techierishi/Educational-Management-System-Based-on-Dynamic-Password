@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,20 +20,16 @@ public class UserServiceImpl implements UserService {
 	public UserDAO getUserDao() {
 		return userDao;
 	}
-	
 //	@Autowired
 	@Resource
 	public void setUserDao(UserDAO userDao) {
 		this.userDao = userDao;
 	}
-
-	@Override
-	public void save(User u) {
-	}
- 
-	@Override
-	public void delete(User u) {
-		userDao.delete(u);
+	public boolean login(User u){
+		if (userDao.login(u)) {
+			return true;
+		} 
+		return false;
 	}
 	
 	@Override
@@ -42,6 +37,14 @@ public class UserServiceImpl implements UserService {
 		System.out.println("UserServiceImpl调用add()方法");
 		userDao.save(u);
 	}
+
+
+	@Override
+	public void delete(User u) {
+		userDao.delete(u);
+	}
+	
+
 
 	@Override
 	public User findById(Integer id) {
@@ -57,5 +60,5 @@ public class UserServiceImpl implements UserService {
 	public User merge(User u) {
 		return this.userDao.merge(u);
 	}
-	
+
 }

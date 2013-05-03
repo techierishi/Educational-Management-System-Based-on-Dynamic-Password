@@ -21,11 +21,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="extjs/ext-all.js" ></script>
 <script type="text/javascript" src="extjs/locale/ext-lang-zh_CN.js" ></script>
 <script type="text/javascript">
+
 Ext.define('LoginForm', {
     extend: 'Ext.form.Panel',
     xtype: 'login-form',
-    
-    
+    baseParams : {create : true },  
+    url: 'User!login',
     title: '登录——华中科技大学武昌分校教务管理系统',
     frame:true,
     width: 320,
@@ -35,20 +36,26 @@ Ext.define('LoginForm', {
     defaults: {
         anchor: '100%'
     },
-    
+
     items: [
         {
             allowBlank: false,
-            fieldLabel: '用户 账号',
+            fieldLabel: '用户账号',
             name: 'user',
             emptyText: '在这输入您的账号'
         },
         {
             allowBlank: false,
-            fieldLabel: '用户 密码',
+            fieldLabel: '用户密码',
             name: 'pass',
             emptyText: '在这输入您的密码',
             inputType: 'password'
+        },
+		{
+            allowBlank: true,
+            fieldLabel: '动态密码',
+            name: 'pass',
+            emptyText: '如果没有可不填'
         },
         {
             xtype:'checkbox',
@@ -57,15 +64,32 @@ Ext.define('LoginForm', {
         }
     ],
     
-    buttons: [
-        { text:'登录' }
-    ]
-});
-Ext.onReady(function(){
-	var login = new LoginForm;
-	var viewport = new Ext.Viewport( {
+  
+	buttons : [ {
+			text : '登录',
+
+			handler : function() {
+			var form = this.up('form').getForm();
+			 if (form.isValid()) {
+                // Submit the Ajax request and handle the response
+                form.submit({
+                    success: function(form, action) {
+                       Ext.window.location = "registerSuccess.jsp";
+                    },
+                    failure: function(form, action) {
+                        Ext.Msg.alert('Failed', action.result ? action.result.message : 'No response');
+                    }
+                });
+                }
+			}
+ 			
+		} ]
+	});
+	Ext.onReady(function() {
+		var login = new LoginForm;
+		var viewport = new Ext.Viewport({
 			items : [ login ]
-		});	
+		});
 	});
 </script>
 </head>
