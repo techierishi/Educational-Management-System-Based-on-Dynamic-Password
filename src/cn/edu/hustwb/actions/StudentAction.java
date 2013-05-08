@@ -1,38 +1,44 @@
 package cn.edu.hustwb.actions;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Component;
 
 import cn.edu.hustwb.dto.Student;
 import cn.edu.hustwb.services.StudentService;
 
 import com.opensymphony.xwork2.ActionSupport;
-
-@Controller("student")
+@Component("student")
 @Scope("prototype")
-public class StudentAction extends ActionSupport {
+public class StudentAction  extends ActionSupport{
+	private List<Student> students;
 	private StudentService ss;
-
-	@Autowired
-	public void setService(StudentService service) {
-		this.ss = service;
-		
+	
+	
+	public String execute() throws Exception{
+		return "success";
 	}
-
-	public String save() {
-		System.out.println("我是业务逻辑层");
-
-		return this.SUCCESS;
+	
+	public String list(){
+		this.students = this.ss.getStudents();
+		return "list";
 	}
-
+	
+	public List<Student> getStudents() {
+		return students;
+	}
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
 	public StudentService getSs() {
 		return ss;
 	}
 	
-	@Autowired
+	@Resource
 	public void setSs(StudentService ss) {
 		this.ss = ss;
 	}
-
 }

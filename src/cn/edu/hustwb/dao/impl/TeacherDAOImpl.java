@@ -7,22 +7,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import cn.edu.hustwb.dao.StudentDAO;
-import cn.edu.hustwb.dto.Student;
+import cn.edu.hustwb.dao.TeacherDAO;
+import cn.edu.hustwb.dto.Teacher;
 
-
-public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
-	private static final Logger log = LoggerFactory.getLogger(StudentDAOImpl.class);
+public class TeacherDAOImpl extends HibernateDaoSupport implements TeacherDAO {
+	private static final Logger log = LoggerFactory.getLogger(TeacherDAOImpl.class);
 
 	protected void initDao() {
+		// do nothing
 	}
 
-	/* (non-Javadoc)
-	 * @see cn.edu.hustwb.dao.impl.StudentDAO#save(cn.edu.hustwb.dto.Student)
-	 */
+
 	@Override
-	public void save(Student transientInstance) {
-		log.debug("saving Student instance");
+	public void save(Teacher transientInstance) {
+		log.debug("saving Teacher instance");
 		try {
 			getHibernateTemplate().save(transientInstance);
 			log.debug("save successful");
@@ -32,12 +30,10 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see cn.edu.hustwb.dao.impl.StudentDAO#delete(cn.edu.hustwb.dto.Student)
-	 */
+
 	@Override
-	public void delete(Student persistentInstance) {
-		log.debug("deleting Student instance");
+	public void delete(Teacher persistentInstance) {
+		log.debug("deleting Teacher instance");
 		try {
 			getHibernateTemplate().delete(persistentInstance);
 			log.debug("delete successful");
@@ -47,15 +43,13 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see cn.edu.hustwb.dao.impl.StudentDAO#findById(java.lang.Integer)
-	 */
+
 	@Override
-	public Student findById(java.lang.Integer id) {
-		log.debug("getting Student instance with id: " + id);
+	public Teacher findById(java.lang.Integer id) {
+		log.debug("getting Teacher instance with id: " + id);
 		try {
-			Student instance = (Student) getHibernateTemplate().get(
-					"cn.edu.hustwb.dto.Student", id);
+			Teacher instance = (Teacher) getHibernateTemplate().get(
+					"cn.edu.hustwb.dto.Teacher", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -63,14 +57,12 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see cn.edu.hustwb.dao.impl.StudentDAO#findByExample(cn.edu.hustwb.dto.Student)
-	 */
+
 	@Override
-	public List<Student> findByExample(Student instance) {
-		log.debug("finding Student instance by example");
+	public List<Teacher> findByExample(Teacher instance) {
+		log.debug("finding Teacher instance by example");
 		try {
-			List<Student> results = (List<Student>) getHibernateTemplate()
+			List<Teacher> results = (List<Teacher>) getHibernateTemplate()
 					.findByExample(instance);
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -84,10 +76,10 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 
 	@Override
 	public List findByProperty(String propertyName, Object value) {
-		log.debug("finding Student instance with property: " + propertyName
+		log.debug("finding Teacher instance with property: " + propertyName
 				+ ", value: " + value);
 		try {
-			String queryString = "from Student as model where model."
+			String queryString = "from Teacher as model where model."
 					+ propertyName + "= ?";
 			return getHibernateTemplate().find(queryString, value);
 		} catch (RuntimeException re) {
@@ -96,14 +88,12 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see cn.edu.hustwb.dao.impl.StudentDAO#findAll()
-	 */
+
 	@Override
 	public List findAll() {
-		log.debug("finding all Student instances");
+		log.debug("finding all Teacher instances");
 		try {
-			String queryString = "from Student";
+			String queryString = "from Teacher";
 			return getHibernateTemplate().find(queryString);
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
@@ -111,12 +101,14 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 		}
 	}
 
-
+	/* (non-Javadoc)
+	 * @see cn.edu.hustwb.dao.impl.TeacherDAO#merge(cn.edu.hustwb.dto.Teacher)
+	 */
 	@Override
-	public Student merge(Student detachedInstance) {
-		log.debug("merging Student instance");
+	public Teacher merge(Teacher detachedInstance) {
+		log.debug("merging Teacher instance");
 		try {
-			Student result = (Student) getHibernateTemplate().merge(
+			Teacher result = (Teacher) getHibernateTemplate().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -127,11 +119,11 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 	}
 
 	/* (non-Javadoc)
-	 * @see cn.edu.hustwb.dao.impl.StudentDAO#attachDirty(cn.edu.hustwb.dto.Student)
+	 * @see cn.edu.hustwb.dao.impl.TeacherDAO#attachDirty(cn.edu.hustwb.dto.Teacher)
 	 */
 	@Override
-	public void attachDirty(Student instance) {
-		log.debug("attaching dirty Student instance");
+	public void attachDirty(Teacher instance) {
+		log.debug("attaching dirty Teacher instance");
 		try {
 			getHibernateTemplate().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -142,11 +134,11 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 	}
 
 	/* (non-Javadoc)
-	 * @see cn.edu.hustwb.dao.impl.StudentDAO#attachClean(cn.edu.hustwb.dto.Student)
+	 * @see cn.edu.hustwb.dao.impl.TeacherDAO#attachClean(cn.edu.hustwb.dto.Teacher)
 	 */
 	@Override
-	public void attachClean(Student instance) {
-		log.debug("attaching clean Student instance");
+	public void attachClean(Teacher instance) {
+		log.debug("attaching clean Teacher instance");
 		try {
 			getHibernateTemplate().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -156,7 +148,7 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 		}
 	}
 
-	public static StudentDAO getFromApplicationContext(ApplicationContext ctx) {
-		return (StudentDAO) ctx.getBean("StudentDAO");
+	public static TeacherDAO getFromApplicationContext(ApplicationContext ctx) {
+		return (TeacherDAO) ctx.getBean("TeacherDAO");
 	}
 }

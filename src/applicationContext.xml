@@ -72,4 +72,28 @@
 	<tx:annotation-driven transaction-manager="txManager" />
 
 	
-	</beans>
+	<bean id="StudentDAO" class="cn.edu.hustwb.dao.impl.StudentDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TeacherDAO" class="cn.edu.hustwb.dao.impl.TeacherDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="ScoreDAO" class="cn.edu.hustwb.dao.impl.ScoreDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="CourseDAO" class="cn.edu.hustwb.dao.impl.CourseDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="NewsDAO" class="cn.edu.hustwb.dao.impl.NewsDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean></beans>

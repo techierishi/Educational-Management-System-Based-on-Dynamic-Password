@@ -11,9 +11,9 @@ create table user
    type                 int,
    status               int,
    permissions          int,
+   ekey                 varchar(256),
    primary key (userid)
 );
-
 
 
 drop table if exists student;
@@ -23,7 +23,7 @@ drop table if exists student;
 /*==============================================================*/
 create table student
 (
-   stuid                int not null,
+   stuid                int not null auto_increment,
    stuname              varchar(256),
    sex                  varchar(4),
    birdata              date,
@@ -44,7 +44,7 @@ drop table if exists teacher;
 /*==============================================================*/
 create table teacher
 (
-   teaid                int not null,
+   teaid                int not null auto_increment,
    teaname              varchar(256),
    sex                  varchar(4),
    birdata              date,
@@ -59,7 +59,7 @@ drop table if exists course;
 /*==============================================================*/
 create table course
 (
-   couid                int not null,
+   couid                int not null auto_increment,
    teaid                int,
    couname              varchar(256),
    primary key (couid)
@@ -89,4 +89,23 @@ alter table score add constraint FK_Reference_1 foreign key (stuid)
 
 alter table score add constraint FK_Reference_3 foreign key (couid)
       references course (couid) on delete restrict on update restrict;
+      
+      
+drop table if exists News;
+
+/*==============================================================*/
+/* Table: News                                                  */
+/*==============================================================*/
+create table News
+(
+   newsid               int not null auto_increment,
+   userid               int,
+   newstitle            varchar(120),
+   newscontent          varchar(10000),
+   newsdate             date,
+   primary key (newsid)
+);
+
+alter table News add constraint FK_Reference_4 foreign key (userid)
+      references user (userid) on delete restrict on update restrict;
       

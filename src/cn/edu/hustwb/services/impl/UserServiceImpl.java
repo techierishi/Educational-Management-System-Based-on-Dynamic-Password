@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void add(User u) {
-		System.out.println("UserServiceImpl调用add()方法");
+//		System.out.println("UserServiceImpl调用add()方法");
 		userDao.save(u);
 	}
 
@@ -59,6 +59,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User merge(User u) {
 		return this.userDao.merge(u);
+	}
+	@Override
+	public List<User> getUsers() {
+		return userDao.findAll();
 	}
 
 }

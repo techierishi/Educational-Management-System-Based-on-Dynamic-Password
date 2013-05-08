@@ -21,6 +21,7 @@ public class User implements java.io.Serializable {
 	private Integer type;
 	private Integer status;
 	private Integer permissions;
+	private String ekey;
 
 	// Constructors
 
@@ -83,6 +84,16 @@ public class User implements java.io.Serializable {
 
 	public void setPermissions(Integer permissions) {
 		this.permissions = permissions;
+	}
+
+	@Column(name = "ekey", length = 256)
+	public String getEkey() {
+		return ekey;
+	}
+
+
+	public void setEkey(String ekey) {
+		this.ekey = ekey;
 	}
 
 }

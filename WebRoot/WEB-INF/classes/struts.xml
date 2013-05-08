@@ -7,13 +7,23 @@
 	<package name="hustwb"  extends="struts-default">
 		
 		<action name="User"  class="user">
-			<result name="success">/registerSuccess.jsp</result>
-			<result name="fail">/registerFail.jsp</result>
+			<result name="registersuccess">/registerSuccess.jsp</result>
+			<result name="registerfail">/registerFail.jsp</result>
 			<result name="register">/register.jsp</result>
 			<result name="login">/login2.jsp</result>
 			<result name= "loginSuccess" >/admin.jsp</result>
 			<result name= "loginFalse" >/loginFail.jsp</result>
+			<result name= "list" >/userlist.jsp</result>
+			<result name= "success" >/login2.jsp</result>
 		</action>
-
+		
+		<action name="Student" class="student">
+			<result name= "list" >/studentlist.jsp</result>
+			<result name= "success" >/login2.jsp</result>
+		</action>
+		<action name="Teacher" class="teacher"> 
+			<result name= "list" >/teacherlist.jsp</result>
+			<result name= "success" >/login2.jsp</result>
+		</action>
 	</package>
 </struts>    

@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			n = tabPanel.add( {
 				id : btn.id,
 				title : btn.text,
-				html : '<iframe width=100% height=100% src=' + btn.id+'.jsp' + ' />',
+				html : '<iframe width=100% height=100% src=' + btn.id + ' />',
 				//autoLoad : '',
 				closable : 'true'
 			});
@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				});
 				
 		var btstu_list = new Ext.Button({
-				id : 'stu_list',
+				id : 'Student!list',
 				text : '学生查询',
 				width : '100%',
 				listeners : {
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 		var bttea_list = new Ext.Button({
-				id : 'tea_list',
+				id : 'Teacher!list',
 				text : '教师查询',
 				width : '100%',
 				listeners : {
@@ -114,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 		var btuser_list = new Ext.Button({
-				id : 'user_list',
+				id : 'User!list',
 				text : '用户列表',
 				width : '100%',
 				listeners : {
@@ -122,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 		var btuser_register = new Ext.Button({
-				id : 'register',
+				id : 'register.jsp',
 				text : '用户注册',
 				width : '100%',
 				listeners : {
@@ -130,7 +130,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 		var btuser_largeregister = new Ext.Button({
-				id : 'registerlarge',
+				id : 'registerlarge.jsp',
 				text : '批量用户注册',
 				width : '100%',
 				listeners : {
@@ -138,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 		var btuser_logout = new Ext.Button({
-				id : 'logout',
+				id : 'logout.jsp',
 				text : '用户登出',
 				width : '100%',
 				listeners : {

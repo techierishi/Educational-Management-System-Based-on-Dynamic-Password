@@ -1,10 +1,15 @@
 package cn.edu.hustwb.dto;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,6 +32,7 @@ public class Student implements java.io.Serializable {
 	private String stuclass;
 	private String national;
 	private Date adtime;
+	private Set<Score> scores = new HashSet<Score>(0);
 
 	// Constructors
 
@@ -36,7 +42,8 @@ public class Student implements java.io.Serializable {
 
 	/** full constructor */
 	public Student(String stuname, String sex, Date birdata, String department,
-			String major, String stuclass, String national, Date adtime) {
+			String major, String stuclass, String national, Date adtime,
+			Set<Score> scores) {
 		this.stuname = stuname;
 		this.sex = sex;
 		this.birdata = birdata;
@@ -45,6 +52,7 @@ public class Student implements java.io.Serializable {
 		this.stuclass = stuclass;
 		this.national = national;
 		this.adtime = adtime;
+		this.scores = scores;
 	}
 
 	// Property accessors
@@ -131,6 +139,15 @@ public class Student implements java.io.Serializable {
 
 	public void setAdtime(Date adtime) {
 		this.adtime = adtime;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "student")
+	public Set<Score> getScores() {
+		return this.scores;
+	}
+
+	public void setScores(Set<Score> scores) {
+		this.scores = scores;
 	}
 
 }

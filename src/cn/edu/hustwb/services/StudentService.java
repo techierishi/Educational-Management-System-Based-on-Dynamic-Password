@@ -5,15 +5,7 @@ import java.util.List;
 import cn.edu.hustwb.dto.Student;
 
 public interface StudentService {
-
-	void save(Student transientInstance);
-
-	void delete(Student persistentInstance);
-
-	Student findById(java.lang.Integer id);
-
+	void add(Student transientInstance);
 	List findAll();
-
-	Student merge(Student detachedInstance);
-
+	public List<Student>getStudents();
 }

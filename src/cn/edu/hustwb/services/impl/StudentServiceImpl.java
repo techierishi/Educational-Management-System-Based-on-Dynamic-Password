@@ -2,50 +2,42 @@ package cn.edu.hustwb.services.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.edu.hustwb.dao.impl.StudentDAOImpl;
+import cn.edu.hustwb.dao.StudentDAO;
 import cn.edu.hustwb.dto.Student;
 import cn.edu.hustwb.services.StudentService;
 
-@Service("studentservice")
+
+@Service("studentService")
 @Transactional(propagation = Propagation.REQUIRED)
 public class StudentServiceImpl implements StudentService {
-	private StudentDAOImpl studentdao;
-
-	@Override
-	public void save(Student transientInstance) {
-		System.out.println("我是数据服务层");
-		studentdao.save(transientInstance);
-	}
+	private StudentDAO studentDao;
 
 	
-	@Override
-	public void delete(Student persistentInstance) {
-		studentdao.delete(persistentInstance);
+	public StudentDAO getStudentDao() {
+		return studentDao;
 	}
-
-	@Override
-	public Student findById(java.lang.Integer id) {
-		return studentdao.findById(id);
+	@Resource
+	public void setStudentDao(StudentDAO studentDao) {
+		this.studentDao = studentDao;
 	}
-
+	@Override
+	public void add(Student st) {
+		System.out.println("studentServiceImpl调用add()方法");
+		studentDao.save(st);
+	}
 	@Override
 	public List findAll() {
-		return studentdao.findAll();
+		return studentDao.findAll();
 	}
-
 	@Override
-	public Student merge(Student detachedInstance) {
-		return studentdao.merge(detachedInstance);
-	}
-
-	@Autowired
-	public void setStudentdao(StudentDAOImpl studentdao) {
-		this.studentdao = studentdao;
+	public List<Student> getStudents() {
+		return studentDao.findAll();
 	}
 
 }

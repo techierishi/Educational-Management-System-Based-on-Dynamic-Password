@@ -18,5 +18,7 @@ public interface UserService {
 	List findAll();
 
 	User merge(User detachedInstance);
+	
+	public List<User>getUsers();
 
 }
