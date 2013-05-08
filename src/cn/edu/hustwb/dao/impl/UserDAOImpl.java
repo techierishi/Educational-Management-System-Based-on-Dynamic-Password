@@ -43,7 +43,7 @@ public class UserDAOImpl  implements UserDAO {
 		int rows=query.list().size();
 		if(rows>0){
 			System.out.println("登录成功");
-			this.update(u);
+//			this.update(u);
 			return true;
 		}else{
 			System.out.println("登录失败");
