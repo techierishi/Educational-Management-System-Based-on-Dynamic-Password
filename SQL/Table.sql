@@ -23,7 +23,7 @@ drop table if exists student;
 /*==============================================================*/
 create table student
 (
-   stuid                int not null auto_increment,
+   stuid                int not null ,
    stuname              varchar(256),
    sex                  varchar(4),
    birdata              date,
@@ -44,7 +44,7 @@ drop table if exists teacher;
 /*==============================================================*/
 create table teacher
 (
-   teaid                int not null auto_increment,
+   teaid                int not null ,
    teaname              varchar(256),
    sex                  varchar(4),
    birdata              date,

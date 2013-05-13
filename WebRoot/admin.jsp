@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <base href="<%=basePath%>">
-<title>My JSP 'index.jsp' starting page</title>
+<title>教务管理系统后台页面</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			tabPanel.setActiveTab(n);
 		};
 		var btindex_list =  new Ext.Button({
-				id : 'news_list',
+				id : 'News!list',
 				text : '公告列表',
 				width : '100%',
 				listeners : {
@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				});
 				
 		var btindex_insert =  new Ext.Button({
-				id : 'news_insert',
+				id : 'writenews.jsp',
 				text : '发布公告',
 				width : '100%',
 				listeners : {
@@ -137,9 +137,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				click : addPanel
 					}
 				});
+		var btuser_update = new Ext.Button({
+				id : 'userupdate.jsp',
+				text : '用户资料修改',
+				width : '100%',
+				listeners : {
+				click : addPanel
+					}
+				});	
+		var btuser_delete = new Ext.Button({
+				id : 'userdelete.jsp',
+				text : '用户删除',
+				width : '100%',
+				listeners : {
+				click : addPanel
+					}
+				});					
 		var btuser_logout = new Ext.Button({
-				id : 'logout.jsp',
-				text : '用户登出',
+				id : 'newsdelete.jsp',
+				text : '公告删除',
 				width : '100%',
 				listeners : {
 				click : addPanel
@@ -175,7 +191,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			title : '用户信息维护',
 			
 			cls : 'empty',
-			items : [ btuser_list,btuser_register,btuser_largeregister]
+			items : [ btuser_list,btuser_register,btuser_update,btuser_delete]
 		});
 		
 		var accordion = new Ext.Panel( {

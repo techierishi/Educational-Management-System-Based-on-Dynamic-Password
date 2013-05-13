@@ -57,7 +57,6 @@ public class Student implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@GeneratedValue
 	@Column(name = "stuid", unique = true, nullable = false)
 	public Integer getStuid() {
 		return this.stuid;

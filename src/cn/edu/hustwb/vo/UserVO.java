@@ -1,6 +1,7 @@
 package cn.edu.hustwb.vo;
 
 public class UserVO {
+	private int userid;
 	private String account;
 	private String password;
 	private String password2;
@@ -63,6 +64,12 @@ public class UserVO {
 	}
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+	public int getUserid() {
+		return userid;
+	}
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 
 }

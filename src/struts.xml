@@ -15,15 +15,28 @@
 			<result name= "loginFalse" >/loginFail.jsp</result>
 			<result name= "list" >/userlist.jsp</result>
 			<result name= "success" >/login2.jsp</result>
+			<result name= "update" >/userupdateSuccess.jsp</result>
+			<result name= "delete" >/userupdateSuccess.jsp</result>
+			
 		</action>
 		
 		<action name="Student" class="student">
 			<result name= "list" >/studentlist.jsp</result>
 			<result name= "success" >/login2.jsp</result>
 		</action>
+		
 		<action name="Teacher" class="teacher"> 
 			<result name= "list" >/teacherlist.jsp</result>
 			<result name= "success" >/login2.jsp</result>
 		</action>
+		
+		<action name="News" class="news"> 
+			<result name= "writeSuccess" >/writenews.jsp</result>
+			<result name= "success" >/login2.jsp</result>
+			<result name= "list" >/newslist.jsp</result>
+			<result name= "look">/newscontent.jsp</result>
+			<result name= "delete">/newsdelete.jsp</result>
+		</action>
+		
 	</package>
 </struts>    

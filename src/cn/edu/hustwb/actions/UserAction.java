@@ -49,13 +49,15 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 		return "success";
 	}
 
-	public String login(){
-		System.out.println("我是UserAction方法的login~!~!~");
+	public String login(){			//登录
 		User user = new User();
 		user.setAccount(uvo.getAccount());
 		user.setPassword(uvo.getPassword());
-		System.out.println(user.getAccount());
-		if (us.login(user)) {
+		System.out.println("UserAction中的login方法，动态密码参数接收:"+uvo.getEkey());
+		
+		if (us.login(user,uvo.getEkey())) { 
+			user = us.findByExample(user).get(0); //拿到User 对象
+			System.out.println("UserAction中通过findByExample拿到对象"+user.getUserid());
 			session.put("user",user );
 			return "loginSuccess";
 		} else {
@@ -64,7 +66,7 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 	}
 	
 	
-	public String register(){
+	public String register(){			//注册
 		System.out.println("我是action~!~!~!~!~!~!~!~!~!~");
 		System.out.println(uvo.getAccount());
 		System.out.println(uvo.getPassword());
@@ -75,22 +77,6 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 		
 		if (uvo.getPassword().equals(uvo.getPassword2())) {
 			System.out.println("成功，返回success");
-			
-			if(uvo.getType()==1){
-				System.out.println(11111);
-//				new 一个 学生
-				Student student = new Student();
-				student.setStuname(uvo.getUsername());
-				student.setSex(uvo.getSex());
-				ss.add(student);
-			}else if(uvo.getType()==2){
-				System.out.println(2222);
-//				new 一个教师
-				Teacher teacher = new Teacher();
-				teacher.setTeaname(uvo.getUsername());
-				teacher.setSex(uvo.getSex());
-				ts.add(teacher);
-			}
 			User user = new User();
 			user.setAccount(uvo.getAccount());
 			user.setPassword(uvo.getPassword());
@@ -99,6 +85,23 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 			user.setPermissions(uvo.getPermissions());
 			user.setEkey(uvo.getEkey());
 			us.add(user);
+			if(uvo.getType()==1){
+//				new 一个 学生
+				Student student = new Student();
+				student.setStuid(us.findByExample(user).get(0).getUserid());
+				System.out.println(us.findByExample(user).get(0).getUserid());
+				student.setStuname(uvo.getUsername());
+				student.setSex(uvo.getSex());
+				ss.add(student);
+			}else if(uvo.getType()==2){
+//				new 一个教师
+				Teacher teacher = new Teacher();
+				teacher.setTeaid(us.findByExample(user).get(0).getUserid());
+				teacher.setTeaname(uvo.getUsername());
+				teacher.setSex(uvo.getSex());
+				ts.add(teacher);
+			}
+			
 			return "registersuccess";
 		}
 	
@@ -109,7 +112,25 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 		return "list";
 	}
 	
-	public String logout(){
+	public String update(){				//修改数据
+		User user = new User();
+		user.setUserid(uvo.getUserid());
+ 		user.setAccount(uvo.getAccount());
+		user.setPassword(uvo.getPassword());
+		user.setType(uvo.getType());
+		user.setStatus(uvo.getStatus());
+		user.setPermissions(uvo.getPermissions());
+		user.setEkey(uvo.getEkey());
+		
+		us.delete(user);
+		return "update";
+	}
+	public String delete(){			//删除用户
+		User user = us.findById(uvo.getUserid());
+		us.delete(user);
+		return "delete";
+	}
+	public String logout(){			//登出
 		session.remove("user");
 		return "login";
 	}
@@ -123,6 +144,7 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 	}
 	
 
+	
 	@Override
 	public Object getModel() {
 		return uvo;

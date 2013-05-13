@@ -48,7 +48,6 @@ public class Teacher implements java.io.Serializable {
 
 	// Property accessors
 	@Id
-	@GeneratedValue
 	@Column(name = "teaid", unique = true, nullable = false)
 	public Integer getTeaid() {
 		return this.teaid;

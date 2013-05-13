@@ -11,7 +11,7 @@ public interface UserService {
 	
 	void add(User transientInstance);
 	
-	boolean login(User transientInstance);
+	boolean login(User transientInstance,String key);
 	
 	User findById(java.lang.Integer id);
 
@@ -19,6 +19,6 @@ public interface UserService {
 
 	User merge(User detachedInstance);
 	
-	public List<User>getUsers();
-
+	 List<User>getUsers();
+	 List<User> findByExample(User instance);
 }

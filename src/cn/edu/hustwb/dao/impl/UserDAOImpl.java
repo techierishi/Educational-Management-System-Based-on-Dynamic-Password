@@ -36,14 +36,19 @@ public class UserDAOImpl  implements UserDAO {
 	}
 	public boolean login(User u){ 
 		System.out.println("UserDAO发出的login方法");
-		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
-		SQLQuery query = session.createSQLQuery("select * from user where account = ? and password=?").addEntity(User.class);
-		query.setParameter(0, u.getAccount());
-		query.setParameter(1, u.getPassword());
-		int rows=query.list().size();
+//		Session session = getHibernateTemplate().getSessionFactory().getCurrentSession();
+//		SQLQuery query = session.createSQLQuery("select * from user where account = ? and password=?").addEntity(User.class);
+//		query.setParameter(0, u.getAccount());
+//		query.setParameter(1, u.getPassword());
+//		int rows=query.list().size();
+		List<User> listuser =findByExample(u);
+		for(int i=0;i<listuser.size();i++){
+			System.out.println(listuser.get(i).getUserid());
+		}
+		int rows = listuser.size();
+
 		if(rows>0){
 			System.out.println("登录成功");
-//			this.update(u);
 			return true;
 		}else{
 			System.out.println("登录失败");
