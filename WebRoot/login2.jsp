@@ -18,18 +18,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 		-->
-<link rel="stylesheet" type="text/css" href="extjs/resources/ext-theme-neptune/ext-theme-neptune-all.css">
-<script type="text/javascript" src="extjs/ext-all.js"></script>
-<script type="text/javascript" src="extjs/locale/ext-lang-zh_CN.js"></script>
-<script type="text/javascript" ></script>
+
 </head>
 <body>
-    <form method="post"  action="User!login">
-    	用户名：<input type="text"  name="account"><br>
-    	密码：<input type="password" name="password"><br>
-    	动态密码：<input type="text" name="ekey"><br>
-    	<input type="submit"  value="提交"/>
-    </form>
+    
+    <div align="center"  style="width:260px " >
+<table  align="center" >
+        <form method="post"  action="User!login" >
+            <tr>
+            	<th>用户名：</th>
+            	<th><input type="text"  name="account" align="right"></th>
+            </tr>
+            <tr>
+            	<th>密码：</th>
+           		<th><input type="password" name="password" align="right"></th>
+            </tr>
+            <tr>
+            <tr>
+            <th>动态密码：</th>
+            	<th><input type="text" name="ekey" align="right"></th>
+            </tr>
+            <th><input type="submit"  value="提交" align="middle"/></th>
+        </form>
+    </table>
+    </div>
      <br>
      <s:debug></s:debug>
 </body>

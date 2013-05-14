@@ -35,6 +35,7 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 	private Map<String, Object> session;
 	private Map<String, Object> application;
 	private List<User> users;
+	private String result =""; 
 	public UserService getUs() {
 		return us;
 	}
@@ -64,7 +65,24 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 			return "loginFalse";
 		}
 	}
-	
+
+	public String login2(){			//extjs登录
+		User user = new User();
+		user.setAccount(uvo.getAccount());
+		user.setPassword(uvo.getPassword());
+		System.out.println("UserAction中的login方法，动态密码参数接收:"+uvo.getEkey());
+		
+		if (us.login(user,uvo.getEkey())) { 
+			user = us.findByExample(user).get(0); //拿到User 对象
+			System.out.println("UserAction中通过findByExample拿到对象"+user.getUserid());
+			session.put("user",user );
+			result = "{success : true,text : \"登录成功!\"}";  
+			return "loginSuccess";
+		} else {
+			result = "{failure : true,text : \"密码错误!\"}";  
+			return "loginFalse";
+		}
+	}
 	
 	public String register(){			//注册
 		System.out.println("我是action~!~!~!~!~!~!~!~!~!~");

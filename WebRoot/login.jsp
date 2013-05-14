@@ -26,7 +26,7 @@ Ext.define('LoginForm', {
     extend: 'Ext.form.Panel',
     xtype: 'login-form',
     baseParams : {create : true },  
-    url: 'User!login',
+    url: 'User!login2',
     title: '登录——华中科技大学武昌分校教务管理系统',
     frame:true,
     width: 320,
@@ -41,20 +41,20 @@ Ext.define('LoginForm', {
         {
             allowBlank: false,
             fieldLabel: '用户账号',
-            name: 'user',
+            name: 'account',
             emptyText: '在这输入您的账号'
         },
         {
             allowBlank: false,
             fieldLabel: '用户密码',
-            name: 'pass',
+            name: 'password',
             emptyText: '在这输入您的密码',
             inputType: 'password'
         },
 		{
             allowBlank: true,
             fieldLabel: '动态密码',
-            name: 'pass',
+            name: 'ekey',
             emptyText: '如果没有可不填'
         },
         {
@@ -74,7 +74,7 @@ Ext.define('LoginForm', {
                 // Submit the Ajax request and handle the response
                 form.submit({
                     success: function(form, action) {
-                       Ext.window.location = "registerSuccess.jsp";
+                       Ext.window.location = "admin.jsp";
                     },
                     failure: function(form, action) {
                         Ext.Msg.alert('Failed', action.result ? action.result.message : 'No response');
