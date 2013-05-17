@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -25,8 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <form method="post"  action="News!delete">
-    	用户id:<input type="text" name="newsid">
-    	<input type="submit"  value="提交"/>
+    	璇峰～鍐欏垹闄ゅ叕鍛婄殑缂栧彿:<input type="text" name="newsid">
+    	<input type="submit"  value="鎻愪氦"/>
     </form>
     <s:debug></s:debug>
   </body>

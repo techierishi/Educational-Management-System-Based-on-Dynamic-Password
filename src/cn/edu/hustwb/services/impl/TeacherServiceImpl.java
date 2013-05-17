@@ -39,5 +39,9 @@ public class TeacherServiceImpl implements TeacherService {
 		System.out.println("ts中的list方法");
 		return teacherDao.findAll();
 	}
+	@Override
+	public Teacher findById(int id) {
+		return teacherDao.findById(id);
+	}
 
 }

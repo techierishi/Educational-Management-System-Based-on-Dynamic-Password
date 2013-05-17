@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -20,15 +20,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<style type="text/css">
+    ul.circle {list-style-type:circle}
+a:link{ color:#f00;decoration:none ;text-decoration:none} 
+a:visited{color:#00F/;decoration:none; text-decoration:none} 
+a:hover{ color:#F00 ;text-decoration:none}
+a:active{ color:#F00;text-decoration:none}
+    </style>
   </head>
   
   <body>
-    <s:iterator value="newslist">
+
+  	<ul class="circle">
+    
+    <s:iterator value="newslist"  status="st">
+    	<li>
     	<a href="News!look?newsid=<s:property value="newsid"/>">  <s:property value="newstitle"/> </a>
-    	<s:property value="newsdate"/>
-    	<br/>
-    </s:iterator>
-    <s:debug></s:debug>
+    	<div align="right"><s:property value="newsdate"/></div>
+      	</li>
+    </s:iterator> 
+
+    </ul>
+  
   </body>
 </html>

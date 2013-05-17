@@ -1,0 +1,20 @@
+@charset "utf-8";
+/* CSS Document */
+
+p { color: #ff0000; }
+body{ background-color:#01559F;}
+#logingif{
+	background-repeat: repeat-x;
+		
+	}
+#login {
+	background-color: #FFF;
+
+	margin: 0;
+	border-style: solid; 
+	border-width: 5px;
+	position:relative;
+	
+	}th
+	{font-size:10px;
+		}

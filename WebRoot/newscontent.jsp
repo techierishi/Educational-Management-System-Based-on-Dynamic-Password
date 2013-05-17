@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -24,7 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  <s:property value="news.newstitle"/><br/>
-  <s:property value="news.newscontent"/>
+  <a href="News!list">返回列表</a>
+  <div align="center"><h2><s:property value="news.newstitle"/><br/></h2></div>
+  <s:property value="news.newscontent" escape = "false"/>
+	<div align="right" style="font-size: 5px">文章编号:<s:property value="news.newsid" escape = "false"/></div>
   </body>
 </html>

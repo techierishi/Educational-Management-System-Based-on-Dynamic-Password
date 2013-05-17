@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -25,31 +25,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <form method="post"  action="User!update">
-    	�û�id:<input type="text" name="userid">
-    	���룺<input type="password" name="password"><br>
-	   �Ա�<select name="sex" >  
-				   <option value="��">��</option> 
-				   <option value="Ů">Ů</option>
+    	用户id:<input type="text" name="userid">
+    	账户:<input type="text" name="account">
+    	密码：<input type="password" name="password"><br>
+	   性别：<select name="sex" >  
+				   <option value="男">男</option> 
+				   <option value="女">女</option>
 				  </select>  <br>
-    	�û����ͣ�<select name="type" >  
-				   <option value="1">ѧ��</option> 
-				   <option value="2">��ʦ</option>
-				   <option value="3">����Ա</option>
+    	用户类型：<select name="type" >  
+				   <option value="1">学生</option> 
+				   <option value="2">教师</option>
+				   <option value="3">管理员</option>
 				  </select>  <br>
-    	�û�״̬��<select name="status" >  
-				   <option value="1">����</option> 
-				   <option value="2">�쳣</option>
-				   <option value="3">��¼</option>
-				   <option value="4">����</option>
+    	用户状态：<select name="status" >  
+				   <option value="1">激活</option> 
+				   <option value="2">异常</option>
+				   <option value="3">登录</option>
+				   <option value="4">其他</option>
 				  </select>  <br>
-    	�û�Ȩ�ޣ�<select name="permissions" >  
-				   <option value="1">��ͨ�û�</option> 
-				   <option value="2">�����û�</option>
+    	用户权限：<select name="permissions" >  
+				   <option value="1">普通用户</option> 
+				   <option value="2">管理用户</option>
 				  </select>  <br>
-    	�������кţ�<input type="text"  name="ekey"><br>
+    	加密序列号：<input type="text"  name="ekey"><br>
 
 
-    	<input type="submit"  value="�ύ"/>
+    	<input type="submit"  value="提交"/>
     </form>
     <s:debug></s:debug>
   </body>

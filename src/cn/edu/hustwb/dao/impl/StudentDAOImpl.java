@@ -114,6 +114,7 @@ public class StudentDAOImpl extends HibernateDaoSupport implements StudentDAO {
 
 	@Override
 	public Student merge(Student detachedInstance) {
+		System.out.println(detachedInstance.getSex());
 		log.debug("merging Student instance");
 		try {
 			Student result = (Student) getHibernateTemplate().merge(

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -24,11 +24,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <s:iterator value="users">
-    	<s:property value="account"/>
-    	<s:property value="password"/>
-    	<br/>
-    </s:iterator>
+   
+    
+    
+    
+    	<table border="1" align="center">
+		<tr>
+			<th>编号</th>
+			<th>账号</th>
+			<th>密码</th>
+			<th>动态密码序列号</th>
+
+		</tr>
+		 <s:iterator value="users">
+		<tr>
+			<td><s:property value="userid"/></td>
+			<td><s:property value="account"/></td>
+			<td><s:property value="password"/></td>
+			<td><s:property value="ekey"/></td>
+		</tr>
+		</s:iterator>
+	</table>
     <s:debug></s:debug>
   </body>
 </html>

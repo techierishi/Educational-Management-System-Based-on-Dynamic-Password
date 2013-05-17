@@ -17,13 +17,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 		-->
-
+	<script src="sample.js" type="text/javascript" ></script>
+	<script src="ckeditor.js" type="text/javascript"></script>
+	<link  href="css/sample.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
     <form method="post"  action="News!write">
     	标题：<input type="text"  name="newstitle"><br>
-	    文章内容：<textarea name="newscontent"></textarea><br>
+	    文章内容：<textarea  class="ckeditor"  cols="80" rows="10"  id="editor1" name="newscontent"></textarea><br>
 
     	<input type="submit"  value="提交"/>
     </form>

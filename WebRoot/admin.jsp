@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 		var btstu_update = new Ext.Button({
-				id : 'stu_update',
+				id : 'studentupdate.jsp',
 				text : '学生信息修改',
 				width : '100%',
 				listeners : {
@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 		var btcourse_list = new Ext.Button({
-				id : 'course_list',
+				id : 'Course!list',
 				text : '课程查询',
 				width : '100%',
 				listeners : {
@@ -106,8 +106,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					}
 				});
 		var btcourse_update = new Ext.Button({
-				id : 'course_update',
-				text : '课程信息修改',
+				id : 'courseadd.jsp',
+				text : '课程添加',
+				width : '100%',
+				listeners : {
+				click : addPanel
+					}
+				});
+		var btcourse_delete = new Ext.Button({
+				id : 'coursedelete.jsp',
+				text : '课程添加',
+				width : '100%',
+				listeners : {
+				click : addPanel
+					}
+				});
+		var btscore_add = new Ext.Button({
+				id : 'scoreadd.jsp',
+				text : '分数添加',
 				width : '100%',
 				listeners : {
 				click : addPanel
@@ -185,7 +201,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			title : '课程管理',
 			
 			cls : 'empty',
-			items : [ btcourse_list,btcourse_update]
+			items : [ btcourse_list,btcourse_update,btcourse_delete,btscore_add]
 		});
 		var item5 = new Ext.Panel( {
 			title : '用户信息维护',
@@ -212,7 +228,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 				title : 'index',
 
-				html : '${user.account}<br/><s:property value="#session.user.account"/><br /><s:property value="#session.user.password" />    <form  method="post"  action="User!logout">    	确定要退出么?<br> <input type="submit"  value="确定退出" onclick="count()"/></form>	 	'	
+				html : '<p>您好：${user.account}<br/> </p>   <form  method="post"  action="User!logout">    	确定要退出么?<br> <input type="submit"  value="确定退出" onclick="count()"/></form>	 	'	
 				
 				//autoLoad : 'login.jsp'
 			} ]

@@ -39,5 +39,13 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> getStudents() {
 		return studentDao.findAll();
 	}
+	@Override
+	public Student findById(int id) {
+		return studentDao.findById(id);
+	}
+	@Override
+	public void update(Student student) {
+		studentDao.merge(student);
+	}
 
 }

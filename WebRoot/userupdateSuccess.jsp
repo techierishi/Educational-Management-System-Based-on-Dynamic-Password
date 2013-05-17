@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-		用户数据更新成功（添加一个自动跳转需要）
+		鐢ㄦ埛鏁版嵁鏇存柊鎴愬姛锛堟坊鍔犱竴涓嚜鍔ㄨ烦杞渶瑕侊級
     <s:debug></s:debug>
   </body>
 </html>

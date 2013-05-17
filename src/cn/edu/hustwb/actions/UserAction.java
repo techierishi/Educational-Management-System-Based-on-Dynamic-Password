@@ -139,8 +139,7 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 		user.setStatus(uvo.getStatus());
 		user.setPermissions(uvo.getPermissions());
 		user.setEkey(uvo.getEkey());
-		
-		us.delete(user);
+		us.merge(user);
 		return "update";
 	}
 	public String delete(){			//删除用户

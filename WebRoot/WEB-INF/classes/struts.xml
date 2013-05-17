@@ -22,6 +22,7 @@
 		
 		<action name="Student" class="student">
 			<result name= "list" >/studentlist.jsp</result>
+			<result name= "find" >/studenteditor.jsp</result>
 			<result name= "success" >/login2.jsp</result>
 		</action>
 		
@@ -37,6 +38,13 @@
 			<result name= "look">/newscontent.jsp</result>
 			<result name= "delete">/newsdelete.jsp</result>
 		</action>
-		
+		<action name="Course" class="course"> 
+			<result name= "add" >/courseadd.jsp</result>
+			<result name= "list" >/courselist.jsp</result>
+			<result name= "delete" >/coursedelete.jsp</result>
+		</action>
+		<action name="Score" class="score"> 
+			<result name= "add" >/scoreadd.jsp</result>
+		</action>
 	</package>
 </struts>    

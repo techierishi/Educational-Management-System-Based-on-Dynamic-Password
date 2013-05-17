@@ -9,4 +9,5 @@ public interface TeacherService {
 	public abstract void add(Teacher tea);
 	public List<Teacher>getTeachers();
 	List findAll();
+	Teacher findById(int id);
 }
