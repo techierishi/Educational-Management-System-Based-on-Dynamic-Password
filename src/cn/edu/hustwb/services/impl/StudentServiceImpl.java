@@ -32,6 +32,10 @@ public class StudentServiceImpl implements StudentService {
 		studentDao.save(st);
 	}
 	@Override
+	public void delete(Student st){
+		studentDao.delete(st);
+	}
+	@Override
 	public List findAll() {
 		return studentDao.findAll();
 	}
@@ -44,8 +48,13 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.findById(id);
 	}
 	@Override
-	public void update(Student student) {
-		studentDao.merge(student);
+	public Student update(Student student) {
+		return studentDao.merge(student);
+	}
+	@Override
+	public List<Student> findByExample(Student s) {
+		
+		return studentDao.findByExample(s);
 	}
 
 }

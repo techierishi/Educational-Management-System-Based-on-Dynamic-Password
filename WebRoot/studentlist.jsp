@@ -24,6 +24,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  	<div  align="center">
+		<form method="post" action="Student!listexample">
+		    	学号精确查找 :<input type="text" name="stuid" ><br>
+		    	条件查找:姓名：<input type="text" name="stuname" >
+			   	性别：<select name="sex"   >  
+						   <option value="">不限</option> 
+						   <option value="男">男</option> 
+						   <option value="女">女</option>
+						  </select>  
+				院系：<input type="text" name="department" ><br>
+				专业：<input type="text" name="major" >
+				班级：<input type="text" name="stuclass" >
+				民族：<input type="text" name="national" >
+			<input type="submit" value="查询" />
+		</form>
+	</div>
+	<div  align="center">
 	<table border="1">
 		<tr>
 			<th>学号</th>
@@ -36,8 +53,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<th>生日</th>
 			
 		</tr>
+		<tr>
+			<td><s:property value="student.stuid"/></td>
+			<td><s:property value="student.stuname"/></td>
+			<td><s:property value="student.sex"/></td>
+			<td><s:property value="student.department"/></td>
+			<td><s:property value="student.major"/></td>
+			<td><s:property value="student.stuclass"/></td>
+			<td><s:property value="student.national"/></td>
+			<td><s:property value="student.birdata"/></td>
+		</tr>
 		<s:iterator value="students">
-    	
 		<tr>
 			<td><s:property value="stuid"/></td>
 			<td><s:property value="stuname"/></td>
@@ -50,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 		</s:iterator>
 	</table>
-
+	</div>
     <s:debug></s:debug>
   </body>
 </html>

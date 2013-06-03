@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.edu.hustwb.dao.ScoreDAO;
 import cn.edu.hustwb.dto.Course;
 import cn.edu.hustwb.dto.Score;
+import cn.edu.hustwb.dto.ScoreId;
 import cn.edu.hustwb.services.ScoreService;
 @Service("scoreService")
 @Transactional(propagation = Propagation.REQUIRED)
@@ -18,7 +19,7 @@ public class ScoreServiceImpl implements ScoreService {
 	private ScoreDAO scoreDao;
 	@Override
 	public void delete(Score s) {
-
+		scoreDao.delete(s);
 	}
 
 	@Override
@@ -27,25 +28,18 @@ public class ScoreServiceImpl implements ScoreService {
 	}
 
 	@Override
-	public Score findById(Integer id) {
-		return null;
-	}
-
-	@Override
 	public List<Score> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return scoreDao.findAll();
 	}
 
 	@Override
-	public Course merge(Score s) {
-		return null;
+	public Score merge(Score s) {
+		return scoreDao.merge(s);
 	}
 
 	@Override
 	public List<Score> findByExample(Score instance) {
-		// TODO Auto-generated method stub
-		return null;
+		return scoreDao.findByExample(instance);
 	}
 	
 	public ScoreDAO getScoreDao() {
@@ -54,6 +48,11 @@ public class ScoreServiceImpl implements ScoreService {
 	@Resource
 	public void setScoreDao(ScoreDAO scoreDao) {
 		this.scoreDao = scoreDao;
+	}
+
+	@Override
+	public Score findById(ScoreId sid) {
+		return scoreDao.findById(sid);
 	}
 
 }

@@ -55,12 +55,18 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 		user.setAccount(uvo.getAccount());
 		user.setPassword(uvo.getPassword());
 		System.out.println("UserAction中的login方法，动态密码参数接收:"+uvo.getEkey());
-		
 		if (us.login(user,uvo.getEkey())) { 
 			user = us.findByExample(user).get(0); //拿到User 对象
 			System.out.println("UserAction中通过findByExample拿到对象"+user.getUserid());
 			session.put("user",user );
-			return "loginSuccess";
+			if (user.getType() == 3) {
+				return "loginSuccess";
+			} else if (user.getType() == 2) {
+				return "loginSuccesst";
+			} else if (user.getType() == 1) {
+				return "loginSuccesss";
+			} else
+				return "loginFalse";
 		} else {
 			return "loginFalse";
 		}
@@ -85,14 +91,6 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 	}
 	
 	public String register(){			//注册
-		System.out.println("我是action~!~!~!~!~!~!~!~!~!~");
-		System.out.println(uvo.getAccount());
-		System.out.println(uvo.getPassword());
-		System.out.println(uvo.getPermissions());
-		System.out.println(uvo.getStatus());
-		System.out.println(uvo.getType());
-		System.out.println(uvo.getEkey());
-		
 		if (uvo.getPassword().equals(uvo.getPassword2())) {
 			System.out.println("成功，返回success");
 			User user = new User();
@@ -125,8 +123,20 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 	
 		return "registerfail";
 	}
-	public String list(){
+	public String list(){				//查询
 		this.users = this.us.getUsers();
+		return "list";
+	}
+	
+	public String listexample(){		//条件查询
+		User u = new User();
+		if(!(uvo.getAccount().equals(null)||uvo.getAccount().equals(""))){
+			u.setAccount(uvo.getAccount());
+		}
+		if(uvo.getType()!=-1){
+			u.setType(uvo.getType());
+		}
+		this.users = us.findByExample(u);
 		return "list";
 	}
 	
@@ -142,6 +152,25 @@ public class UserAction extends ActionSupport implements ModelDriven,RequestAwar
 		us.merge(user);
 		return "update";
 	}
+	
+	public String updateme(){				//修改动态密码
+		User user = new User();
+		user = (User) session.get("user");
+		user.setEkey(uvo.getEkey());
+		us.merge(user);
+		return "updateme";
+	}
+	public String updatepwd(){				//修改密码
+		User user = new User();
+		user = (User) session.get("user");
+		if(uvo.getPassword().equals(uvo.getPassword2())){
+			user.setPassword(uvo.getPassword());
+			us.merge(user);
+			return "updatepwd";
+		}
+		return "updatepwdfalse";
+	}
+	
 	public String delete(){			//删除用户
 		User user = us.findById(uvo.getUserid());
 		us.delete(user);

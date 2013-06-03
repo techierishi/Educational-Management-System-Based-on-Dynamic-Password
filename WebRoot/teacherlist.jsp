@@ -24,11 +24,44 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <s:iterator value="teachers">
-    	<s:property value="teaid"/>
-    	<s:property value="teaname"/>
-    	<br/>
-    </s:iterator>
+  	<div  align="center">
+		<form method="post" action="Teacher!listexample">
+		    	教号精确查找 :<input type="text" name="teaid" ><br>
+		    	条件查找:姓名：<input type="text" name="teaname" >
+			   	性别：<select name="sex"   >  
+						   <option value="">不限</option> 
+						   <option value="男">男</option> 
+						   <option value="女">女</option>
+						  </select>  
+				院系：<input type="text" name="department" ><br>
+			<input type="submit" value="查询" />
+		</form>
+	</div>
+    <div align="center">
+    	<table border="1">
+		<tr>
+			<th>教号</th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>院系</th>
+		</tr>
+		<tr>
+			<td><s:property value="teacher.teaid"/></td>
+			<td><s:property value="teacher.teaname"/></td>
+			<td><s:property value="teacher.sex"/></td>
+			<td><s:property value="teacher.department"/></td>
+
+		</tr>
+		<s:iterator value="teachers">
+		<tr>
+			<td><s:property value="teaid"/></td>
+			<td><s:property value="teaname"/></td>
+			<td><s:property value="sex"/></td>
+			<td><s:property value="department"/></td>
+		</tr>
+		</s:iterator>
+	</table>
+	</div>
     <s:debug></s:debug>
   </body>
 </html>

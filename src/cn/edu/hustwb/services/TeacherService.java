@@ -10,4 +10,7 @@ public interface TeacherService {
 	public List<Teacher>getTeachers();
 	List findAll();
 	Teacher findById(int id);
+	public  List<Teacher> findByExample(Teacher t);
+	 abstract void delete(Teacher tea);
+	 abstract Teacher update(Teacher tea);
 }

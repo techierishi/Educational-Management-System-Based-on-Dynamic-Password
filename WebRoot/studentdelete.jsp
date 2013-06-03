@@ -24,34 +24,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	<div  align="center">
-		<form method="post" action="User!listexample">
-			用户名：<input type="text" name="account"> 用户类型：<select
-				name="type">
-				<option value="-1">不限</option>
-				<option value="1">学生</option>
-				<option value="2">教师</option>
-				<option value="3">管理员</option>
-			</select> <input type="submit" value="查询" />
-		</form>
-	</div>
-
-	<table border="1" align="center">
-		<tr>
-			<th>编号</th>
-			<th>账号</th>
-			<th>密码</th>
-			<th>动态密码序列号</th>
-		</tr>
-		 <s:iterator value="users">
-		<tr>
-			<td><s:property value="userid"/></td>
-			<td><s:property value="account"/></td>
-			<td><s:property value="password"/></td>
-			<td><s:property value="ekey"/></td>
-		</tr>
-		</s:iterator>
-	</table>
-
+    <form method="post"  action="Student!delete">
+    	请填写删除学生的学号:<input type="text" name="stuid">
+    	<input type="submit"  value="提交"/>
+    </form>
+    <s:debug></s:debug>
   </body>
 </html>

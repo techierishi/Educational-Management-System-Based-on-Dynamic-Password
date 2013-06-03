@@ -9,5 +9,7 @@ public interface StudentService {
 	List findAll();
 	public List<Student>getStudents();
 	Student findById(int id);
-	void update(Student student);
+	Student update(Student student);
+	List<Student> findByExample(Student s);
+	public void delete(Student st);
 }

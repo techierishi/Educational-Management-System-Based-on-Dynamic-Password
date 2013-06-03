@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.edu.hustwb.dto.Course;
 import cn.edu.hustwb.dto.Score;
+import cn.edu.hustwb.dto.ScoreId;
 
 public interface ScoreService {
 
@@ -11,11 +12,11 @@ public interface ScoreService {
 	
 	void add(Score transientInstance);
 	
-	Score findById(java.lang.Integer id);
+	Score findById(ScoreId sid);
 
 	List<Score> findAll();
 
-	Course merge(Score detachedInstance);
+	Score merge(Score detachedInstance);
 	
 	 List<Score> findByExample(Score instance);
 }

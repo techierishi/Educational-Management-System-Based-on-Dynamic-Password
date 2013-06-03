@@ -24,34 +24,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  
 	<div  align="center">
-		<form method="post" action="User!listexample">
-			用户名：<input type="text" name="account"> 用户类型：<select
-				name="type">
-				<option value="-1">不限</option>
-				<option value="1">学生</option>
-				<option value="2">教师</option>
-				<option value="3">管理员</option>
-			</select> <input type="submit" value="查询" />
-		</form>
-	</div>
-
-	<table border="1" align="center">
+	<table border="1">
 		<tr>
-			<th>编号</th>
-			<th>账号</th>
-			<th>密码</th>
-			<th>动态密码序列号</th>
+			<th>姓名</th>
+			<th>课程</th>
+			<th>任课教师</th>
+			<th>院系</th>
+			<th>专业</th>
+			<th>班级</th>
+			<th>平时成绩</th>
+			<th>卷面成绩</th>
+			<th>总成绩</th>
+						
 		</tr>
-		 <s:iterator value="users">
+		<s:iterator value="scores">
 		<tr>
-			<td><s:property value="userid"/></td>
-			<td><s:property value="account"/></td>
-			<td><s:property value="password"/></td>
-			<td><s:property value="ekey"/></td>
+			<td><s:property value="student.stuname"/></td>
+			<td><s:property value="course.couname"/></td>
+			<td><s:property value="course.teacher.teaname"/></td>
+			<td><s:property value="student.department"/></td>
+			<td><s:property value="student.major"/></td>
+			<td><s:property value="student.stuclass"/></td>
+			<td><s:property value="usuallyscore"/></td>
+			<td><s:property value="paperscore"/></td>
+			<td><s:property value="sumscore"/></td>
 		</tr>
 		</s:iterator>
 	</table>
-
+	</div>
+    <s:debug></s:debug>
   </body>
 </html>

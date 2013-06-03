@@ -24,34 +24,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	<div  align="center">
-		<form method="post" action="User!listexample">
-			用户名：<input type="text" name="account"> 用户类型：<select
-				name="type">
-				<option value="-1">不限</option>
-				<option value="1">学生</option>
-				<option value="2">教师</option>
-				<option value="3">管理员</option>
-			</select> <input type="submit" value="查询" />
+  	<div  align="center">
+		<form method="post" action="Score!find">
+    		学生编号：<input type="text"  name="stuid"><br>
+    		课程编号：<input type="text"  name="couid"><br>
+    		课程名称：<input type="text"  name="couname"><br>
+    		学生名称：<input type="text"  name="stuname"><br>
+    		所在院系：<input type="text"  name="department"><br>
+    		所在专业：<input type="text"  name="major"><br>
+    		所在班级：<input type="text"  name="stuclass"><br>
+			<input type="submit" value="查询" />
 		</form>
 	</div>
 
-	<table border="1" align="center">
-		<tr>
-			<th>编号</th>
-			<th>账号</th>
-			<th>密码</th>
-			<th>动态密码序列号</th>
-		</tr>
-		 <s:iterator value="users">
-		<tr>
-			<td><s:property value="userid"/></td>
-			<td><s:property value="account"/></td>
-			<td><s:property value="password"/></td>
-			<td><s:property value="ekey"/></td>
-		</tr>
-		</s:iterator>
-	</table>
 
+    <s:debug></s:debug>
   </body>
 </html>

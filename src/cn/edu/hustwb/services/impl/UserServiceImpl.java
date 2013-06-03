@@ -53,7 +53,6 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void add(User u) {
-//		System.out.println("UserServiceImpl调用add()方法");
 		userDao.save(u);
 	}
 
@@ -62,8 +61,6 @@ public class UserServiceImpl implements UserService {
 	public void delete(User u) {
 		userDao.delete(u);
 	}
-	
-
 
 	@Override
 	public User findById(Integer id) {

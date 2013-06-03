@@ -43,5 +43,17 @@ public class TeacherServiceImpl implements TeacherService {
 	public Teacher findById(int id) {
 		return teacherDao.findById(id);
 	}
+	@Override
+	public List<Teacher> findByExample(Teacher t) {
+		return teacherDao.findByExample(t);
+	}
+	@Override
+	public void delete(Teacher tea) {
+		teacherDao.delete(tea);
+	}
+	@Override
+	public Teacher update(Teacher tea) {
+		return teacherDao.merge(tea);
+	}
 
 }

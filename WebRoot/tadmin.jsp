@@ -184,7 +184,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				listeners : {
 				click : addPanel
 					}
+				});
+		var btuser_updatepwd = new Ext.Button({
+				id : 'userupdatepwd.jsp',
+				text : '密码修改',
+				width : '100%',
+				listeners : {
+				click : addPanel
+					}
 				});	
+		var btuser_updateekey = new Ext.Button({
+				id : 'userupdateekey.jsp',
+				text : '动态密码修改',
+				width : '100%',
+				listeners : {
+				click : addPanel
+					}
+				});			
 		var btuser_delete = new Ext.Button({
 				id : 'userdelete.jsp',
 				text : '用户删除',
@@ -205,33 +221,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			title : '首页',
 			
 			cls : 'empty',
-			items : [ btindex_list,btindex_insert,btuser_logout]
+			items : [ btindex_list]
 		});
 
-		var item2 = new Ext.Panel( {
-			title : '学生信息管理',
-			
-			cls : 'empty',
-			items : [ btstu_list,btstu_update,btstu_delete]
-		});
-
-		var item3 = new Ext.Panel( {
-			title : '教师信息管理',
-			
-			cls : 'empty',
-			items : [ bttea_list,bttea_update,bttea_delete]
-		});
 		var item4 = new Ext.Panel( {
 			title : '课程管理',
 			
 			cls : 'empty',
-			items : [ btcourse_list,btcourse_update,btcourse_delete,btscore_add,btscore_find]
+			items : [ btcourse_list,btscore_find,btscore_add]
 		});
 		var item5 = new Ext.Panel( {
 			title : '用户信息维护',
 			
 			cls : 'empty',
-			items : [ btuser_list,btuser_register,btuser_update,btuser_delete]
+			items : [ btuser_updatepwd,btuser_updateekey]
 		});
 		
 		var accordion = new Ext.Panel( {
@@ -240,7 +243,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			split : true,
 			width : 210,
 			layout : 'accordion',
-			items : [ item1, item2, item3, item4, item5 ]
+			items : [ item1, item4, item5 ]
 		});
 
 		var tabPanel = new Ext.TabPanel( {

@@ -17,13 +17,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 		-->
-<link rel="stylesheet" type="text/css" href="extjs/resources/ext-theme-neptune/ext-theme-neptune-all.css">
-<script type="text/javascript" src="extjs/ext-all.js"></script>
-<script type="text/javascript" src="extjs/locale/ext-lang-zh_CN.js"></script>
-<script type="text/javascript" ></script>
+
 </head>
 
 <body>
+<div align="center">
     <form method="post"  action="User!register">
     	用户名：<input type="text"  name="account"><br>
     	密码：<input type="password" name="password"><br>
@@ -53,6 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     	<input type="submit"  value="提交"/>
     </form>
+    </div>
      <br>
 </body>
 </html>

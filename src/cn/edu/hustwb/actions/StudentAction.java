@@ -1,14 +1,13 @@
 package cn.edu.hustwb.actions;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.annotation.Resource;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import cn.edu.hustwb.dto.Score;
 import cn.edu.hustwb.dto.Student;
 import cn.edu.hustwb.services.StudentService;
 import cn.edu.hustwb.vo.StudentVO;
@@ -31,12 +30,40 @@ public class StudentAction  extends ActionSupport  implements ModelDriven{
 		this.students = this.ss.getStudents();
 		return "list";
 	}
-	
+	public String listexample(){		//条件查询
+		Student s = new Student();
+		
+		if(svo.getStuid()!=0){
+			System.out.println(svo.getStuid());
+			student = ss.findById(svo.getStuid());
+			System.out.println(s.getStuid());
+
+			return "list";
+		}
+		if(!svo.getStuname().equals("")){
+			s.setStuname(svo.getStuname());
+		}
+		if(!svo.getSex().equals("")){
+			s.setSex(svo.getSex());
+		}
+		if(!svo.getDepartment().equals("")){
+			s.setDepartment(svo.getDepartment());
+		}
+		if(!svo.getMajor().equals("")){
+			s.setMajor(svo.getMajor());
+		}
+		if(!svo.getNational().equals("")){
+			s.setNational(svo.getNational());
+		}
+
+		this.students = ss.findByExample(s);
+		return "list";
+	}
 	public String find(){
-		student = ss.findById(this.sid);
+		this.student = ss.findById(this.sid);
 		return "find";
 	}
-	public String update(){
+	public String update(){		//更新
 		Student stu = new Student();
 		stu.setStuid(svo.getStuid());
 		stu.setBirdata(svo.getBirdata());
@@ -48,10 +75,15 @@ public class StudentAction  extends ActionSupport  implements ModelDriven{
 		stu.setAdtime(svo.getBirdata());
 		stu.setStuclass(svo.getStuclass());
 
-		ss.update(stu);
+		this.student = ss.update(stu);
 		return "list";
 	}
-	
+	public String delete(){		//删除
+		Student stu = new Student();
+		stu = ss.findById(svo.getStuid());
+		ss.delete(stu);;
+		return "delete";
+	}
 	public List<Student> getStudents() {
 		return students;
 	}

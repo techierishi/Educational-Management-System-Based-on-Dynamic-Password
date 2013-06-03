@@ -24,34 +24,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-	<div  align="center">
-		<form method="post" action="User!listexample">
-			用户名：<input type="text" name="account"> 用户类型：<select
-				name="type">
-				<option value="-1">不限</option>
-				<option value="1">学生</option>
-				<option value="2">教师</option>
-				<option value="3">管理员</option>
-			</select> <input type="submit" value="查询" />
-		</form>
-	</div>
-
-	<table border="1" align="center">
-		<tr>
-			<th>编号</th>
-			<th>账号</th>
-			<th>密码</th>
-			<th>动态密码序列号</th>
-		</tr>
-		 <s:iterator value="users">
-		<tr>
-			<td><s:property value="userid"/></td>
-			<td><s:property value="account"/></td>
-			<td><s:property value="password"/></td>
-			<td><s:property value="ekey"/></td>
-		</tr>
-		</s:iterator>
-	</table>
-
+    <form method="post"  action="Teacher!update">
+    	教号:<input type="text" name="teaid" value="<s:property value="teacher.teaid"/>">
+    	姓名：<input type="text" name="teaname"  value="<s:property value="teacher.teaname"/>"><br>
+	   	性别：<select name="sex"   >  
+				   <option value="男">男</option> 
+				   <option value="女">女</option>
+				  </select>  <br>
+		院系：<input type="text" name="department" value="<s:property value="teacher.department"/>"><br>
+    	<input type="submit"  value="提交"/>
+    </form>
   </body>
 </html>

@@ -12,10 +12,15 @@
 			<result name="register">/register.jsp</result>
 			<result name="login">/login2.jsp</result>
 			<result name= "loginSuccess" >/admin.jsp</result>
+			<result name= "loginSuccesst" >/tadmin.jsp</result>
+			<result name= "loginSuccesss" >/sadmin.jsp</result>
 			<result name= "loginFalse" >/loginFail.jsp</result>
 			<result name= "list" >/userlist.jsp</result>
 			<result name= "success" >/login2.jsp</result>
 			<result name= "update" >/userupdateSuccess.jsp</result>
+			<result name= "updateme" >/userupdateekey.jsp</result>
+			<result name= "updatepwd" >/userupdatepwd.jsp</result>
+			<result name= "updatepwdfalse" >/userupdatepwd.jsp</result>
 			<result name= "delete" >/userupdateSuccess.jsp</result>
 			
 		</action>
@@ -24,11 +29,14 @@
 			<result name= "list" >/studentlist.jsp</result>
 			<result name= "find" >/studenteditor.jsp</result>
 			<result name= "success" >/login2.jsp</result>
+			<result name= "delete" >/studentdelete.jsp</result>
 		</action>
 		
 		<action name="Teacher" class="teacher"> 
 			<result name= "list" >/teacherlist.jsp</result>
+			<result name= "find" >/teachereditor.jsp</result>
 			<result name= "success" >/login2.jsp</result>
+			<result name= "delete" >/teacherdelete.jsp</result>
 		</action>
 		
 		<action name="News" class="news"> 
@@ -45,6 +53,8 @@
 		</action>
 		<action name="Score" class="score"> 
 			<result name= "add" >/scoreadd.jsp</result>
+			<result name= "list" >/scorelist.jsp</result>
+			<result name= "me" >/scoreme.jsp</result>
 		</action>
 	</package>
 </struts>    
